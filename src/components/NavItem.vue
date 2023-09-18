@@ -10,7 +10,6 @@ export default {
       class="flex flex-col items-center p-2 text-xs capitalize"
     >
       <slot></slot>
-      {{ page }}
     </a>
   </li>
 </template>

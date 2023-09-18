@@ -32,7 +32,7 @@ const onChangePageHandler = (page) => {
 </script>
 
 <template>
-  <TheHeader />
+  <TheHeader @go-to="onChangePageHandler($event)" />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline v-show="currentPage === page_timeline" />
@@ -40,7 +40,7 @@ const onChangePageHandler = (page) => {
     <TheProgress v-show="currentPage === page_progress" />
   </main>
 
-  <TheNav :current-page="currentPage" @navigate="onChangePageHandler" />
+  <TheNav @navigate="onChangePageHandler($event)" :current-page="currentPage" />
 </template>
 
 <style scoped></style>
