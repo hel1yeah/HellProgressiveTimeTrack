@@ -13,18 +13,9 @@ import {
   page_progress
 } from '@/common/constants.js'
 
+import { normalizePageHash } from '@/common/functions.js'
+
 const currentPage = ref(normalizePageHash())
-
-function normalizePageHash() {
-  const hash = window.location.hash.slice(1)
-
-  if ([page_timeline, page_activities, page_progress].includes(hash)) {
-    return hash
-  }
-
-  window.location.hash = page_timeline
-  return page_timeline
-}
 
 const onChangePageHandler = (page) => {
   currentPage.value = page
@@ -32,7 +23,7 @@ const onChangePageHandler = (page) => {
 </script>
 
 <template>
-  <TheHeader @go-to="onChangePageHandler($event)" />
+  <TheHeader @go-to="onChangePageHandler" />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline v-show="currentPage === page_timeline" />
@@ -40,7 +31,7 @@ const onChangePageHandler = (page) => {
     <TheProgress v-show="currentPage === page_progress" />
   </main>
 
-  <TheNav @navigate="onChangePageHandler($event)" :current-page="currentPage" />
+  <TheNav @navigate="onChangePageHandler" :current-page="currentPage" />
 </template>
 
 <style scoped></style>
