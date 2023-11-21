@@ -1,0 +1,21 @@
+<script setup>
+const props = defineProps({
+  timelineItem: {
+    type: Object,
+    required: true
+  }
+})
+
+const hourLinkClasses = [
+  'absolute -top-4 left-1/2 -translate-x-1/2 rounded border px-2 font-mono text-lg border-radius-2',
+  props.timelineItem.hour === new Date().getHours()
+    ? 'bg-purple-900 front-back text-white'
+    : 'bg-gray-100 text-gray-500'
+]
+</script>
+
+<template>
+  <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
+    <a href="#" :class="hourLinkClasses">{{ props.timelineItem.hour }}:00</a>
+  </li>
+</template>
