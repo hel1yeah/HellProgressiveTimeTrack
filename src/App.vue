@@ -8,9 +8,9 @@ import TheActivities from '@/pages/TheActivities.vue'
 import TheProgress from '@/pages/TheProgress.vue'
 
 import {
-  page_timeline,
-  page_activities,
-  page_progress
+  PAGE_TIMELINE,
+  PAGE_ACTIVITIES,
+  PAGE_PROGRESS
 } from '@/common/constants.js'
 
 import { normalizePageHash, generateTimelineItems } from '@/common/functions.js'
@@ -24,15 +24,15 @@ const onChangePageHandler = (page) => {
 </script>
 
 <template>
-  <TheHeader @go-to="onChangePageHandler" />
+  <TheHeader @navigate="onChangePageHandler" />
 
   <main class="flex flex-grow flex-col">
     <TheTimeline
-      v-show="currentPage === page_timeline"
+      v-show="currentPage === PAGE_TIMELINE"
       :timelineItems="timelineItems"
     />
-    <TheActivities v-show="currentPage === page_activities" />
-    <TheProgress v-show="currentPage === page_progress" />
+    <TheActivities v-show="currentPage === PAGE_ACTIVITIES" />
+    <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
 
   <TheNav @navigate="onChangePageHandler" :current-page="currentPage" />

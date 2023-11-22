@@ -1,9 +1,9 @@
 <script setup>
-import { page_timeline } from '@/common/constants.js'
+import { PAGE_TIMELINE } from '@/common/constants.js'
 </script>
 
 <template>
-  <a :href="`#${page_timeline}`">
+  <a :href="`#${PAGE_TIMELINE}`">
     <img src="@/assets/logo.png" alt="logo" class="h-9" />
   </a>
 </template>

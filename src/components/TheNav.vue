@@ -8,7 +8,9 @@ defineProps({
     validator: isPageValid
   }
 })
-const emit = defineEmits(['navigate'])
+const emit = defineEmits({
+  navigate: isPageValid
+})
 const onChangePage = (payload) => {
   emit('navigate', payload)
 }
