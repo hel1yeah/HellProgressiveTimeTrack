@@ -1,6 +1,11 @@
 <script setup>
 import { NAV_ITEMS } from '@/common/constants.js'
-defineProps(['currentPage'])
+defineProps({
+  currentPage: {
+    type: String,
+    required: true
+  }
+})
 const emit = defineEmits(['navigate'])
 const onChangePage = (payload) => {
   emit('navigate', payload)
