@@ -18,7 +18,7 @@ function normalizePageHash() {
 
 function generateTimelineItems() {
   const timelineItems = []
-  for (let hour = 1; hour <= HOURS_IN_DAY; hour++) {
+  for (let hour = 0; hour <= HOURS_IN_DAY; hour++) {
     timelineItems.push({
       hour
     })

@@ -3,7 +3,10 @@ import { NAV_ITEMS } from '@/common/constants.js'
 defineProps({
   currentPage: {
     type: String,
-    required: true
+    required: true,
+    validator(currentPage) {
+      return Object.keys(NAV_ITEMS).includes(currentPage)
+    }
   }
 })
 const emit = defineEmits(['navigate'])

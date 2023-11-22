@@ -14,4 +14,4 @@ export const NAV_ITEMS = {
   [page_progress]: ChartBarIcon
 }
 
-export const HOURS_IN_DAY = 24
+export const HOURS_IN_DAY = 23
