@@ -1,12 +1,11 @@
 <script setup>
 import { NAV_ITEMS } from '@/common/constants.js'
+import { isPageValid } from '@/common/validator.js'
 defineProps({
   currentPage: {
     type: String,
     required: true,
-    validator(currentPage) {
-      return Object.keys(NAV_ITEMS).includes(currentPage)
-    }
+    validator: isPageValid
   }
 })
 const emit = defineEmits(['navigate'])

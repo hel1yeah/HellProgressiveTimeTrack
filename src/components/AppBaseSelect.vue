@@ -1,6 +1,7 @@
 <script setup>
 import AppBaseButton from '@/components/AppBaseButton.vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { isOptionsValid } from '@/common/validator.js'
 
 const props = defineProps({
   placeholder: {
@@ -16,12 +17,7 @@ const props = defineProps({
   options: {
     type: Array,
     required: true,
-    validator(options) {
-      return options.every(
-        ({ value, label }) =>
-          typeof value === 'number' && typeof label === 'string'
-      )
-    }
+    validator: isOptionsValid
   }
 })
 </script>
