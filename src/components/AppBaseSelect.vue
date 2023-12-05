@@ -34,7 +34,7 @@ function onSelect(value) {
 
 <template>
   <div class="flex gap-2">
-    <AppBaseButton>
+    <AppBaseButton @click="onSelect(null)">
       <XMarkIcon class="h-8" />
     </AppBaseButton>
     <select
