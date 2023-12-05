@@ -36,7 +36,6 @@ const options = [
 const selectedActivityId = ref(3)
 
 function updateSelectedActivityId(activityId) {
-  console.log(activityId)
   selectedActivityId.value = Number(activityId)
 }
 </script>

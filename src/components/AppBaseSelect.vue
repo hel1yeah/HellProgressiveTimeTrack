@@ -23,7 +23,7 @@ const props = defineProps({
 
 const emit = defineEmits({
   select(value) {
-    return typeof Number(value) === 'number'
+    return typeof value === 'number'
   }
 })
 
@@ -39,7 +39,7 @@ function onSelect(value) {
     </AppBaseButton>
     <select
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
-      @change="onSelect($event.target.value)"
+      @change="onSelect(+$event.target.value)"
     >
       <option selected disabled value="">{{ placeholder }}</option>
       <option
