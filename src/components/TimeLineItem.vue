@@ -1,6 +1,7 @@
 <script setup>
 import AppBaseSelect from '@/components/AppBaseSelect.vue'
 import { isTimelineItemValid } from '@/common/validator.js'
+import { ref } from 'vue'
 
 const props = defineProps({
   timelineItem: {
@@ -32,7 +33,12 @@ const options = [
   }
 ]
 
-const selectedActivityId = 3
+const selectedActivityId = ref(3)
+
+function updateSelectedActivityId(activityId) {
+  console.log(activityId)
+  selectedActivityId.value = Number(activityId)
+}
 </script>
 
 <template>
@@ -42,6 +48,7 @@ const selectedActivityId = 3
       :selected="selectedActivityId"
       :options="options"
       :placeholder="'Rest'"
+      @select="updateSelectedActivityId"
     />
   </li>
 </template>

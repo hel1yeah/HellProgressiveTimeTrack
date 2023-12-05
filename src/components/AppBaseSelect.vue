@@ -20,6 +20,16 @@ const props = defineProps({
     validator: isOptionsValid
   }
 })
+
+const emit = defineEmits({
+  select(value) {
+    return typeof Number(value) === 'number'
+  }
+})
+
+function onSelect(value) {
+  emit('select', value)
+}
 </script>
 
 <template>
@@ -27,7 +37,10 @@ const props = defineProps({
     <AppBaseButton>
       <XMarkIcon class="h-8" />
     </AppBaseButton>
-    <select class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl">
+    <select
+      class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
+      @change="onSelect($event.target.value)"
+    >
       <option selected disabled value="">{{ placeholder }}</option>
       <option
         v-for="{ value, label } in props.options"
