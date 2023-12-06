@@ -5,9 +5,7 @@ export function isPageValid(page) {
 }
 
 export function isTimelineItemValid({ hour }) {
-  return (
-    typeof hour === 'number' && hour >= MIDNIGHT_HOUR && hour <= HOURS_IN_DAY
-  )
+  return isHourValid(hour)
 }
 
 export function isTimelineItemsValid(timelineItems) {
@@ -17,7 +15,36 @@ export function isTimelineItemsValid(timelineItems) {
 }
 
 export function isOptionsValid(options) {
-  return options.every(
-    ({ value, label }) => typeof value === 'number' && typeof label === 'string'
-  )
+  return options.every(({ value, label }) => isNumber(value) && isString(label))
+}
+
+function isHourValid(hour) {
+  return isNumber(hour) && isBeetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
+}
+
+export function isUndefinedOrNull(value) {
+  return isUndefinded(value) || isNull(value)
+}
+
+function isBeetween(value, start, end) {
+  return value >= start && end <= end
+}
+
+export function isNumberOrNull(value) {
+  return isNumber(value) || isNull(value)
+}
+
+export function isNull(value) {
+  return value === null
+}
+
+export function isUndefinded(value) {
+  return value === undefined
+}
+export function isNumber(value) {
+  return typeof value === 'number'
+}
+
+export function isString(value) {
+  return typeof value === 'string'
 }

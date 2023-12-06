@@ -1,7 +1,12 @@
 <script setup>
 import AppBaseButton from '@/components/AppBaseButton.vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import { isOptionsValid } from '@/common/validator.js'
+import {
+  isOptionsValid,
+  isUndefinedOrNull,
+  isNumberOrNull
+} from '@/common/validator.js'
+import { computed } from 'vue'
 
 const props = defineProps({
   placeholder: {
@@ -10,7 +15,7 @@ const props = defineProps({
     default: 'Rest'
   },
   selected: {
-    type: Number,
+    type: Number || null,
     required: true,
     default: 1
   },
@@ -22,14 +27,14 @@ const props = defineProps({
 })
 
 const emit = defineEmits({
-  select(value) {
-    return typeof value === 'number'
-  }
+  select: isNumberOrNull
 })
 
 function onSelect(value) {
   emit('select', value)
 }
+
+const isNotSelected = computed(() => isUndefinedOrNull(props.selected))
 </script>
 
 <template>
@@ -41,7 +46,9 @@ function onSelect(value) {
       class="w-full truncate rounded bg-gray-100 py-1 px-2 text-2xl"
       @change="onSelect(+$event.target.value)"
     >
-      <option selected disabled value="">{{ placeholder }}</option>
+      <option :selected="isNotSelected" disabled value="">
+        {{ placeholder }}
+      </option>
       <option
         v-for="{ value, label } in props.options"
         :key="value"

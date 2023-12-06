@@ -33,10 +33,10 @@ const options = [
   }
 ]
 
-const selectedActivityId = ref(3)
+const selectedActivityId = ref(1)
 
 function updateSelectedActivityId(activityId) {
-  selectedActivityId.value = Number(activityId)
+  selectedActivityId.value = activityId
 }
 </script>
 
