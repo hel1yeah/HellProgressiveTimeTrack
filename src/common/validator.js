@@ -18,7 +18,7 @@ export function isOptionsValid(options) {
   return options.every(({ value, label }) => isNumber(value) && isString(label))
 }
 
-function isHourValid(hour) {
+export function isHourValid(hour) {
   return isNumber(hour) && isBeetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
 }
 
